@@ -1,50 +1,25 @@
-body{
-    height: 100dvh;
-    width: 100dvw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:linear-gradient(30deg,rgb(4, 4, 4),blue,rgb(76, 2, 14))
-}
-.container{
-    border: 1px solid black;
-    padding: 50px;
-    border-radius: 30px;
-    box-shadow: 0px 10px 10px 10px;
-}
-#input{
-    width: 100%;
-    height: 100px;
-    border-radius: 30px;
-    text-align: right;
-    border: none;
-     background: transparent;
-     font-size: larger;
-        color: white;
-         font-size:30px;
-}
-
-input::placeholder{
-    color: white;
-    font-size: 50px;
-}
-
-button{
-    height: 60px;
-    width: 60px;
-    margin: 15px;
-    font-size: larger;
-    border-radius: 50%;
-    box-shadow: 0px 0px 10px 10px;
-    text-align: center;
-    font-weight: bold;
-
-
-}
-#equal{
-    background-color: rgb(255, 255, 0);
-}
-.s{
-   color : rgb(5, 246, 5);
-    background: black;
-}
+let button=document.querySelectorAll("button");
+let input =document.querySelector("#input");
+let ac=document.getElementById("#Ac");
+let string="";
+let array=Array.from(button);
+array.forEach(val =>{
+    val.addEventListener('click',(e)=>{
+        if(e.target.innerText=="="){
+            string=eval(string);
+            input.value=string;
+        }
+        else if(e.target.innerText=="AC"){
+            string="";
+            input.value=string;
+        }
+        else if(e.target.innerText=="DEL"){
+            string=string.substring(0,string.length-1);
+            input.value=string;
+        }
+        else{
+            string+=e.target.innerText;
+            input.value=string
+        }
+    })
+})
